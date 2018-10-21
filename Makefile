@@ -5,7 +5,7 @@
 kerndir=kernel/linux-2.6.36
 cross=../../toolchain/hndtools-arm-linux-2.6.36-uclibc-4.5.3/bin/arm-brcm-linux-uclibcgnueabi-
 
-STRIP=toolchain/hndtools-arm-linux-2.6.36-uclibc-4.5.3/bin/arm-brcm-linux-uclibcgnueabi-strip 
+STRIP=toolchain/hndtools-arm-linux-2.6.36-uclibc-4.5.3/bin/arm-brcm-linux-uclibcgnueabi-strip
 
 NCPUS:=1
 OS:=$(shell uname -s)
@@ -14,7 +14,9 @@ ifeq ($(OS),Linux)
   NCPUS:=$(shell grep -c ^processor /proc/cpuinfo)
 endif
 
-export LD_LIBRARY_PATH=$(shell pwd)/toolchain/hndtools-arm-linux-2.6.36-uclibc-4.5.3/lib/
+# export LD_LIBRARY_PATH=$(shell pwd)/toolchain/hndtools-arm-linux-2.6.36-uclibc-4.5.3/lib/
+cross=arm-xiaomi-linux-uclibcgnueabi-r1d-
+STRIP=arm-xiaomi-linux-uclibcgnueabi-r1d-strip
 
 all: vmlinuz rootfs
 	@echo '-----------------------------------------------------'

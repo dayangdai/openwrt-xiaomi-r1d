@@ -98,7 +98,9 @@ vmlinux.o: FORCE
 
 # Declare generated files as targets for modpost
 $(symverfile):         __modpost ;
-$(modules:.ko=.mod.c): __modpost ;
+$(modules:.ko=.mod.c): __modpost
+	test -f $@.hack.c && cp $@.hack.c $@ || true
+	@echo cp $@.hack.c $@
 
 
 # Step 5), compile all *.mod.c files
